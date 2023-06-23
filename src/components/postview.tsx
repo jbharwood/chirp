@@ -15,14 +15,14 @@ export const PostView = (props: PostWithUser) => {
       <Image
         src={author.profilePicture}
         className="h-14 w-14 rounded-full"
-        alt={`@${author.username}'s profile picture`}
+        alt={`@${author.username ?? ""}'s profile picture`}
         width={56}
         height={56}
       />
       <div className="flex flex-col">
         <div className="flex gap-1 text-slate-300">
-          <Link href={`/@${author.username}`}>
-            <span>{`@${author.username} `}</span>
+          <Link href={`/@${author.username ?? ""}`}>
+            <span>{`@${author.username ?? ""} `}</span>
           </Link>
           <Link href={`/post/${post.id}`}>
             <span className="font-thin">{` · ${dayjs(
@@ -30,7 +30,7 @@ export const PostView = (props: PostWithUser) => {
             ).fromNow()}`}</span>
           </Link>
         </div>
-        <span className="text-2xl">{post.content}</span>
+        <span className="text-2xl">{post.content ?? ""}</span>
       </div>
     </div>
   );
